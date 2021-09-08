@@ -13,38 +13,38 @@ const useStyles = makeStyles({
 });
 
 const  Data = () => {
-	const classes = useStyles();
-	const [ users, setUsers ] = useState([]);
+  const classes = useStyles();
+  const [ users, setUsers ] = useState([]);
 
-	useEffect( () => {
+  useEffect( () => {
     fetch("https://reqres.in/api/users?page=1")
       .then((response) => response.json())
       .then((json) => setUsers(json.data))
       .catch((error) => console.error(error))
   }, []);
-	console.log("bdbxm0==", users)
+  console.log("bdbxm0==", users)
   return (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginTop: '50px'}}>
-     	{users && users.map((res)=>(
-     		<Card style={{display: 'block', width: '40vw', transitionDuration: '0.3s', marginBottom: '50px'}}>
-		      <CardActionArea>
-		        <CardMedia
-		          component="img"
-		          alt="profile_pic"
-		          height="140"
-		          image={res.avatar}
-		          title="profile_pic"
-		        />
-		        <CardContent>
-		          <Typography gutterBottom variant="h5" component="h2">
-		            Name: {res.first_name} {res.last_name}
-		          </Typography>
-		          <Typography variant="body2" color="textSecondary" component="p">
-		            Email: {res.email}
-		          </Typography>
-		        </CardContent>
-		      </CardActionArea>
-		    </Card>
+      {users && users.map((res)=>(
+        <Card style={{display: 'block', width: '40vw', transitionDuration: '0.3s', marginBottom: '50px'}}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="profile_pic"
+              height="140"
+              image={res.avatar}
+              title="profile_pic"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Name: {res.first_name} {res.last_name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Email: {res.email}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       ))}
     </div>
   );
