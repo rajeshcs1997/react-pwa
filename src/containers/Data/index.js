@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
+import { Styles } from "./styles";
 
 const useStyles = makeStyles({
   root: {
@@ -26,17 +27,15 @@ const  Data = (props) => {
       .then((json) => setUsers(json.data))
       .catch((error) => console.error(error))
   }, []);
-  //console.log("bdbxm0==", users)
   const handleClick = (e,res) =>{
-  	//console.log("bms=====",res)
-  	props.sendData(res)
-  	history.push('/details')
+    props.sendData(res)
+    history.push('/details')
   }
   return (
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', paddingTop: '50px'}}>
+    <div style={Styles.container}>
       {users && users.map((res, i)=>(
-      	<>
-        <Card style={{display: 'block', width: '40vw', transitionDuration: '0.3s', marginBottom: '50px'}}>
+        <>
+        <Card style={Styles.card}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -47,7 +46,10 @@ const  Data = (props) => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Name: {res.first_name} {res.last_name}
+                Name:
+              </Typography>
+              <Typography gutterBottom variant="h5" component="h2">
+                {res.first_name} {res.last_name}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 Email: {res.email}
@@ -55,10 +57,10 @@ const  Data = (props) => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-		        <Button size="small" color="primary" onClick={(e)=>handleClick(e,res)}>
-		          Show more 
-		        </Button>
-		      </CardActions>
+            <Button size="small" color="primary" onClick={(e)=>handleClick(e,res)}>
+              Show more 
+            </Button>
+          </CardActions>
         </Card>
         </>
       ))}

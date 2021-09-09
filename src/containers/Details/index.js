@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
+import { Styles } from "./styles";
 
 const  Data = (props) => {
   const [ users, setUsers ] = useState([]);
 
   console.log("detailsdtata==sdcd==", props.data)
   return (
-    <div style={{backgroundColor: 'aqua', padding: '50px'}}>
-    	<p style={{fontSize: '25px', color: 'royalblue', fontWeight: 'bold'}}>Here's your personal detail</p>
-    	<img src={props.data.avatar} alt="profile_pic" style={{borderRadius: '50%'}} />
-    	<p style={{fontSize: '20px', color: 'royalblue', fontWeight: 'bold'}}>Your id: <span style={{color: 'gray',fontWeight: 'bold'}}> {props.data.id}</span></p>
-    	<p style={{fontSize: '20px', color: 'royalblue', fontWeight: 'bold'}}>Your Name: <span style={{color: 'gray',fontWeight: 'bold'}}> {props.data.first_name} {props.data.last_name}</span></p>
-    	<p style={{fontSize: '20px', color: 'royalblue', fontWeight: 'bold'}}>Your Email: <span style={{color: 'gray',fontWeight: 'bold'}}> {props.data.email}</span></p>
+    <div style={Styles.container}>
+      <p style={Styles.heading}>Here's your personal detail</p>
+      <img src={props.data.avatar} alt="profile_pic" style={{borderRadius: '50%'}} />
+      <p style={Styles.head}>Your id: <span style={Styles.span}> {props.data.id}</span></p>
+      <p style={Styles.head}>Your Name: <span style={Styles.span}> {props.data.first_name} {props.data.last_name}</span></p>
+      <p style={Styles.head}>Your Email: <span style={Styles.span}> {props.data.email}</span></p>
     </div>
   );
 }
